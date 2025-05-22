@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CosmicDev Portfolio",
+  title: "Rahul Joy Portfolio",
   description: "Exploring the universe of code and creativity",
   viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
 };
