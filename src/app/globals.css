@@ -1,42 +1,51 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .hero {
+    @apply relative overflow-hidden;
+    background: #0f172a;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(60deg, #3b82f6, #7c3aed, #f43f5e);
+    background-size: 600% 600%;
+    animation: cosmicShift 15s ease infinite;
+    filter: blur(80px);
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  /* Optional if you have pattern classes */
+  .bg-stripe-pattern {
+    background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0, transparent 5px);
+  }
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 6px 6px;
+  }
+  .bg-crater-pattern {
+    background: radial-gradient(circle at 30% 30%, #ccc 1px, transparent 1px),
+      radial-gradient(circle at 60% 70%, #aaa 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+  .bg-wave-pattern {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%);
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+@layer utilities {
+  @keyframes cosmicShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  @keyframes spin {
+    to { transform: rotate(360deg); }
   }
 }
