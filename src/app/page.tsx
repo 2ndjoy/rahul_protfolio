@@ -207,7 +207,7 @@ export default function SolarSystem() {
   return (
     <motion.div
       ref={containerRef}
-      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/20 to-slate-900 overflow-hidden cursor-none"
+      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden cursor-none"
       onMouseMove={handleMove}
       onTouchMove={handleMove}
       onMouseEnter={() => setIsHovering(true)}
