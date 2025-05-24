@@ -87,13 +87,13 @@ function playClickSound() {
 // -------------------- FOOTER COMPONENT --------------------
 function CosmicFooter() {
 const links = [
-  { name: 'GitHub', href: '#', icon: <CodeBracketSquareIcon className="w-4 h-4" /> },
-  { name: 'LinkedIn', href: '#', icon: <BriefcaseIcon className="w-4 h-4" /> },
-  { name: 'Instagram', href: '#', icon: <Instagram className="w-4 h-4" /> },  // <-- Changed here
+  { name: 'GitHub', href: 'https://github.com/2ndjoy', icon: <CodeBracketSquareIcon className="w-4 h-4" /> },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/rahul-chakrabarty-joy-47a95b209/', icon: <BriefcaseIcon className="w-4 h-4" /> },
+  { name: 'Instagram', href: 'https://www.instagram.com/throughmyeyes_024/', icon: <Instagram className="w-4 h-4" /> },  // <-- Changed here
   { name: 'Telegram', href: '#', icon: <ChatBubbleLeftIcon className="w-4 h-4" /> },
-  { name: 'Spotify', href: '#', icon: <MusicalNoteIcon className="w-4 h-4" /> },
-  { name: 'Cosmos', href: '#', icon: <GlobeAltIcon className="w-4 h-4" /> },
-  { name: 'Letterboxd', href: '#', icon: <FilmIcon className="w-4 h-4" /> },
+  { name: 'Spotify', href: 'https://open.spotify.com/playlist/12YvUYNLtI9Fo5IdVtgb52?si=aq92sY_sRbCakZNJeaTUWA', icon: <MusicalNoteIcon className="w-4 h-4" /> },
+  { name: 'Cosmos', href: 'https://www.cosmos.so/joylogy', icon: <GlobeAltIcon className="w-4 h-4" /> },
+  { name: 'Letterboxd', href: 'https://letterboxd.com/RahulJoy/', icon: <FilmIcon className="w-4 h-4" /> },
 ]
 
 
