@@ -1,12 +1,15 @@
 import { SolarSystemBackground } from "@/components/SolarSystem";
 
 export const metadata = {
-  title: 'About — Joy Portfolio',
-  description: "Learn more about Joy's journey as a developer...",
-  icons: {
-    icon: '/favicon.ico',
-  },
-}
+  title: "About",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+
 
 export default function AboutPage() {
   return (
@@ -113,15 +116,12 @@ export default function AboutPage() {
         </section>
 
         {/* Acknowledgments */}
-        <section className="mt-16 pt-8 border-t border-white/10">
+        {/* <section className="mt-16 pt-8 border-t border-white/10">
           <h2 className="text-2xl font-bold mb-4 text-blue-300">Acknowledgments</h2>
           <p className="text-gray-300 mb-4">
             Most of my work is collaborative. I'm grateful to these mentors and colleagues who've shaped my journey:
           </p>
-          <p className="text-gray-400">
-            Alex Chen, Maria Rodriguez, James Wilson, and the entire team at DevHouse.
-          </p>
-        </section>
+        </section> */}
       </div>
     </main>
   );

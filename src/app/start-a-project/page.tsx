@@ -82,18 +82,20 @@ export default function StartAProjectPage() {
   const [design, setDesign] = useState("I already have a design");
   const [cms, setCms] = useState("I don't need a CMS");
   const [frontend, setFrontend] = useState(FRONTEND_OPTIONS[0]);
-  const [toppings, setToppings] = useState([]);
+const [toppings, setToppings] = useState<string[]>([]);
+
   const [mateRate, setMateRate] = useState(false);
   const [currency, setCurrency] = useState("USD");
   const [activeCategory, setActiveCategory] = useState("all");
 
-  function toggleTopping(topping) {
-    if (toppings.includes(topping)) {
-      setToppings(toppings.filter((t) => t !== topping));
-    } else {
-      setToppings([...toppings, topping]);
-    }
+function toggleTopping(topping: string) {
+  if (toppings.includes(topping)) {
+    setToppings(toppings.filter((t) => t !== topping));
+  } else {
+    setToppings([...toppings, topping]);
   }
+}
+
 
   // Calculate total in USD
   let total_usd = 0;
