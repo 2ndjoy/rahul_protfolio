@@ -11,8 +11,8 @@ import {
   GlobeAltIcon,
   FilmIcon,
 } from '@heroicons/react/24/outline'
-
 import { Instagram } from 'lucide-react'
+
 interface Planet {
   id: number
   name: string
@@ -86,16 +86,15 @@ function playClickSound() {
 
 // -------------------- FOOTER COMPONENT --------------------
 function CosmicFooter() {
-const links = [
-  { name: 'GitHub', href: 'https://github.com/2ndjoy', icon: <CodeBracketSquareIcon className="w-4 h-4" /> },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/rahul-chakrabarty-joy-47a95b209/', icon: <BriefcaseIcon className="w-4 h-4" /> },
-  { name: 'Instagram', href: 'https://www.instagram.com/throughmyeyes_024/', icon: <Instagram className="w-4 h-4" /> },  // <-- Changed here
-  { name: 'Telegram', href: '#', icon: <ChatBubbleLeftIcon className="w-4 h-4" /> },
-  { name: 'Spotify', href: 'https://open.spotify.com/playlist/12YvUYNLtI9Fo5IdVtgb52?si=aq92sY_sRbCakZNJeaTUWA', icon: <MusicalNoteIcon className="w-4 h-4" /> },
-  { name: 'Cosmos', href: 'https://www.cosmos.so/joylogy', icon: <GlobeAltIcon className="w-4 h-4" /> },
-  { name: 'Letterboxd', href: 'https://letterboxd.com/RahulJoy/', icon: <FilmIcon className="w-4 h-4" /> },
-]
-
+  const links = [
+    { name: 'GitHub', href: 'https://github.com/2ndjoy', icon: <CodeBracketSquareIcon className="w-4 h-4" /> },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/rahul-chakrabarty-joy-47a95b209/', icon: <BriefcaseIcon className="w-4 h-4" /> },
+    { name: 'Instagram', href: 'https://www.instagram.com/throughmyeyes_024/', icon: <Instagram className="w-4 h-4" /> },
+    { name: 'Telegram', href: '#', icon: <ChatBubbleLeftIcon className="w-4 h-4" /> },
+    { name: 'Spotify', href: 'https://open.spotify.com/playlist/12YvUYNLtI9Fo5IdVtgb52?si=aq92sY_sRbCakZNJeaTUWA', icon: <MusicalNoteIcon className="w-4 h-4" /> },
+    { name: 'Cosmos', href: 'https://www.cosmos.so/joylogy', icon: <GlobeAltIcon className="w-4 h-4" /> },
+    { name: 'Letterboxd', href: 'https://letterboxd.com/RahulJoy/', icon: <FilmIcon className="w-4 h-4" /> },
+  ]
 
   return (
     <motion.footer
@@ -105,7 +104,8 @@ const links = [
       className="fixed bottom-0 w-full backdrop-blur-lg bg-white/5 border-t border-white/10 z-50"
     >
       <div className="max-w-7xl mx-auto px-4 py-4">
-        <nav className="flex flex-wrap justify-center gap-4 md:gap-6">
+        {/* Hidden on mobile, visible from md upwards */}
+        <nav className="hidden md:flex flex-wrap justify-center gap-4 md:gap-6">
           {links.map((link) => (
             <motion.div
               key={link.name}
@@ -128,6 +128,7 @@ const links = [
             </motion.div>
           ))}
         </nav>
+
         <motion.div
           className="mt-4 text-center text-xs text-white/50"
           initial={{ opacity: 0 }}
@@ -283,7 +284,7 @@ export default function SolarSystem() {
       >
         <div className="text-center space-y-6">
           <motion.h1
-            className="text-2xl md:text-2xl font-bold  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400  tracking-tight animate-bounce"
+            className="text-2xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 tracking-tight animate-bounce"
             whileHover={{ letterSpacing: '0.02em' }}
           >
             Hi, I’m Joy
@@ -299,51 +300,47 @@ export default function SolarSystem() {
             opportunities. Let’s build something extraordinary together.
           </motion.p>
 
-         <motion.nav
-             className="mt-10 flex flex-col items-center space-y-3"
-             initial="hidden"
-             animate="show"
-             variants={{
-               hidden: {},
-               show: {
-                 transition: {
-                   staggerChildren: 0.1,
-                 },
-               },
-             }}
->
-
-  <hr />
-
-  
-  {['Start a project', 'Works', 'Services', 'Journal', 'Contact', 'About'].map((label) => (
-    <motion.div
-      key={label}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: 'spring', stiffness: 250 }}
-      variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-      onClick={playClickSound}
-    >
-      <Link
-        href={`/${label.toLowerCase().replace(/\s/g, '-')}`}
-        className="
-          inline-block px-6 py-2
-          text-sm md:text-base font-semibold tracking-wide
-          text-white/90 hover:text-white
-          bg-white/10 hover:bg-white/20
-          backdrop-blur-md rounded-full
-          shadow-inner shadow-white/10
-          ring-1 ring-white/10 hover:ring-white/20
-          transition-all duration-300
-        "
-      >
-        {label}
-      </Link>
-    </motion.div>
-  ))}
-</motion.nav>
-
+          <motion.nav
+            className="mt-10 flex flex-col items-center space-y-3"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
+            <hr />
+            {['Start a project', 'Works', 'Services', 'Journal', 'Contact', 'About'].map((label) => (
+              <motion.div
+                key={label}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 250 }}
+                variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+                onClick={playClickSound}
+              >
+                <Link
+                  href={`/${label.toLowerCase().replace(/\s/g, '-')}`}
+                  className="
+                    inline-block px-6 py-2
+                    text-sm md:text-base font-semibold tracking-wide
+                    text-white/90 hover:text-white
+                    bg-white/10 hover:bg-white/20
+                    backdrop-blur-md rounded-full
+                    shadow-inner shadow-white/10
+                    ring-1 ring-white/10 hover:ring-white/20
+                    transition-all duration-300
+                  "
+                >
+                  {label}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.nav>
         </div>
       </motion.div>
 
