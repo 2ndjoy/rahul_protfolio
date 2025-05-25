@@ -242,13 +242,18 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 <p className="text-white/80">{project.year}</p>
               </div>
             </div>
-
+            <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 250 }}
+          >
             <Link 
               href={`/projects/${project.id}`}
-              className="inline-block mt-6 px-4 py-2 text-sm bg-white/10 backdrop-blur-lg rounded-lg hover:bg-white/20 transition-all w-fit"
+              className="inline-block mt-6 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-lg rounded-lg hover:bg-white/20 transition-all w-fit"
             >
               View Details
             </Link>
+            </motion.div>
           </div>
         </div>
 
@@ -306,18 +311,33 @@ export default function ProjectsPage() {
 
       <div className="max-w-7xl mx-auto px-4 py-24 space-y-12 relative z-10">
         <motion.h1 
-          className="text-4xl font-bold text-center mb-12 text-blue-400"
+          className="text-4xl font-bold text-center mb-12  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400  animate-pulse"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Cosmic Projects
+          Journeys Through Code
         </motion.h1>
 
         <div className="space-y-12">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
+        </div>
+        <div className='grid justify-center items-center gap-3 m-2'>
+           <h2 className="font-semibold text-xl text-white animate-bounce">Got a project in mind? Let’s make it happen!</h2>
+         
+        <div className='flex justify-center'>
+          <motion.button
+                className="inline-flex items-center gap-2 px-9 py-3 text-xl bg-gradient-to-r from-blue-400 to-purple-400  rounded text-white font-semibold text-sm hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="/start-a-project">
+                Start a project
+                </Link>
+              </motion.button>
+        </div>
         </div>
       </div>
     </div>

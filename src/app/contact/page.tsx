@@ -1,241 +1,74 @@
+// src/app/contact/page.tsx
 "use client";
 
+import { useState, useEffect } from "react";
 import { ArrowLeftIcon } from "@/components/icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { CalendarDays } from "lucide-react";
+import { PopupButton } from "react-calendly";
+import { SolarSystemBackground } from "@/components/SolarSystem";
 
-const SolarSystemBackground = () => {
-  return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      {/* Central Sun */}
-      <motion.div 
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-20 h-20 rounded-full bg-yellow-400 shadow-2xl">
-          <div className="w-full h-full rounded-full bg-yellow-200/30 animate-pulse" />
-          <div className="absolute inset-0 rounded-full bg-yellow-300/20 blur-xl scale-150" />
-          <div className="absolute inset-0 rounded-full bg-orange-300/10 blur-2xl scale-200" />
-        </div>
-      </motion.div>
-
-      {/* Mercury */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-32 h-32 relative">
-          <motion.div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="w-3 h-3 rounded-full bg-gray-400 shadow-lg" />
-          </motion.div>
-          <div className="absolute inset-0 rounded-full border border-white/10" />
-        </div>
-      </motion.div>
-
-      {/* Venus */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-48 h-48 relative">
-          <motion.div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="w-4 h-4 rounded-full bg-yellow-300 shadow-lg">
-              <div className="w-full h-full rounded-full bg-yellow-100/30 blur-sm" />
-            </div>
-          </motion.div>
-          <div className="absolute inset-0 rounded-full border border-white/5" />
-        </div>
-      </motion.div>
-
-      {/* Earth */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-64 h-64 relative">
-          <motion.div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="w-5 h-5 rounded-full bg-blue-400 shadow-lg">
-              <div className="w-full h-full rounded-full bg-blue-200/40 blur-sm" />
-            </div>
-          </motion.div>
-          <div className="absolute inset-0 rounded-full border border-white/5" />
-        </div>
-      </motion.div>
-
-      {/* Mars */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-80 h-80 relative">
-          <motion.div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="w-4 h-4 rounded-full bg-red-500 shadow-lg">
-              <div className="w-full h-full rounded-full bg-red-300/40 blur-sm" />
-            </div>
-          </motion.div>
-          <div className="absolute inset-0 rounded-full border border-white/5" />
-        </div>
-      </motion.div>
-
-      {/* Jupiter */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-96 h-96 relative">
-          <motion.div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="w-8 h-8 rounded-full bg-orange-400 shadow-xl">
-              <div className="w-full h-full rounded-full bg-orange-200/30 blur-sm" />
-              <div className="absolute inset-1 rounded-full border-t border-b border-orange-600/30" />
-            </div>
-          </motion.div>
-          <div className="absolute inset-0 rounded-full border border-white/5" />
-        </div>
-      </motion.div>
-
-      {/* Saturn */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-[28rem] h-[28rem] relative">
-          <motion.div 
-            className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-          >
-            <div className="relative">
-              <div className="w-7 h-7 rounded-full bg-yellow-300 shadow-xl">
-                <div className="w-full h-full rounded-full bg-yellow-100/30 blur-sm" />
-              </div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12">
-                <div className="absolute inset-0 rounded-full border border-white/20" />
-                <div className="absolute inset-1 rounded-full border border-white/15" />
-              </div>
-            </div>
-          </motion.div>
-          <div className="absolute inset-0 rounded-full border border-white/5" />
-        </div>
-      </motion.div>
-
-      {[...Array(50)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-white rounded-full"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-          }}
-          animate={{ opacity: [0.3, 1, 0.3] }}
-          transition={{ 
-            duration: 2 + Math.random() * 3, 
-            repeat: Infinity, 
-            delay: Math.random() * 2 
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 export default function ContactPage() {
+  const [stars, setStars] = useState<{ top: string; left: string }[]>([]);
+
+  useEffect(() => {
+    const s = Array.from({ length: 50 }).map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+    }));
+    setStars(s);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
-      {/* Solar System Background - Reused from previous page */}
-      <motion.div
-        className="fixed top-6 left-6 z-50"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-white/70 hover:text-white/90 transition-colors group backdrop-blur-lg bg-white/5 px-3 py-2 rounded-lg border border-white/10"
-        >
-          <motion.div
-            whileHover={{ x: -4 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <ArrowLeftIcon className="h-5 w-5 group-hover:text-blue-300 transition-colors" />
+    <div className="min-h-screen py-20 px-4 sm:px-8 text-white bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+     <SolarSystemBackground/>
+     
+
+      {/* Back Button */}
+      <motion.div className="fixed top-6 left-6 z-50" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+        <Link href="/" className="flex items-center gap-2 text-white/70 hover:text-white transition-colors backdrop-blur-md bg-white/5 px-4 py-2 rounded-xl border border-white/10 shadow-md">
+          <motion.div whileHover={{ x: -3 }} transition={{ stiffness: 300 }}>
+            <ArrowLeftIcon className="h-5 w-5" />
           </motion.div>
-          <span className="text-sm font-medium">Back to Orbit</span>
+          <span className="text-sm font-semibold">Back to Orbit</span>
         </Link>
       </motion.div>
-  <SolarSystemBackground/>
 
-      <main className="relative z-10 min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full bg-white/5 backdrop-blur-lg rounded-3xl p-12 border border-white/10 shadow-2xl shadow-purple-500/10">
-          <div className="mb-10">
-            <h1 className="text-4xl flex flex-wrap gap-4 text-zinc-50 md:text-5xl font-bold font-sans font-serif mb-2">
-              Hello.
-            </h1>
-            <p className="text-xl text-yellow-200 font-sans font-serif mb-6">
-              Looking for an elegant, professionally-built website that's completely yours to control?
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-zinc-300 to-yellow-500 rounded-full mb-8"></div>
+      {/* Main Card */}
+      <main className="relative z-10 flex flex-col items-center justify-center p-8 mt-16">
+        <motion.div className="w-full max-w-2xl bg-white/5 backdrop-blur-lg rounded-3xl p-12 border border-white/10 shadow-[0_0_80px_-20px_rgba(0,0,255,0.3)]" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}>
+          <h1 className="text-4xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4 animate-pulse">Let’s Connect</h1>
+          <p className="text-lg text-blue-200 mb-8 text-center">Ready to bring your vision to life? Click below to schedule a 30-minute chat.</p>
+
+          {/* Popup Calendly Button */}
+         <div className="flex justify-center">
+           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 250 }} className="mb-10 inline-block">
+            <PopupButton
+              url="https://calendly.com/baker0003locked/30min"
+              rootElement={document.body}
+              text="Schedule a Call"
+              className="flex items-center gap-2 px-6 py-3 text-base font-semibold tracking-wide text-white bg-gradient-to-r from-blue-400 to-purple-400  rounded-full text-white font-semibold text-sm hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 rounded-full shadow-lg hover:shadow-xl transition-all"
+            >
+              <CalendarDays className="h-5 w-5" />
+              Schedule a Call
+            </PopupButton>
+          </motion.div>
+         </div>
+
+          <div className="text-center mb-6">
+            <p className="text-xl text-yellow-300">Prefer email?</p>
+            <a href="mailto:baker0003locked@gmail.com" className="inline-block text-white/90 hover:text-white font-medium transition-colors text-2xl mb-1">baker0003locked@gmail.com</a>
+          
+          <h2 className="text-xl mt-6 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4 animate-bounce">Across the Galaxy</h2>
           </div>
 
-          <div className="space-y-6">
-            <div className="group">
-              <p className="text-sm text-yellow-200 mb-1">Email</p>
-              <a href="mailto:legendarywaller@gmail.com" 
-                 className="text-xl font-medium  font-sans text-white hover:text-blue-300 transition-colors flex items-center gap-2">
-                baker0003locked@gmail.com
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
-              </a>
-            </div>
-
-            <div>
-              <p className="text-sm text-yellow-200 mb-3">Across the Digital Cosmos</p>
-              <div className="flex flex-wrap gap-4 text-zinc-50">
-                {[
-                  { name: "LinkedIn", color: "from-white/10 to-white/20" },
-                  { name: "Dribbble", color: "from-white/10 to-white/20" },
-                  { name: "Twitter", color: "from-white/10 to-white/20" },
-                  { name: "Github", color: "from-white/10 to-white/20" }
-                ].map((social) => (
-
-                  //bg-white/10 backdrop-blur-lg rounded-lg hover:bg-white/20 transition-all w-fit 
-
-                  <a key={social.name} href="#" 
-                     className={`bg-gradient-to-r ${social.color} px-4 py-2 rounded-lg font-medium hover:scale-105 transition-transform shadow-md`}>
-                    {social.name}
-                  </a>
-                ))}
-              </div>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {['LinkedIn','Dribbble','Twitter','GitHub'].map((name) => (
+              <motion.a key={name} href="#" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 300 }} className="flex items-center gap-2 px-5 py-2 text-sm font-medium text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full shadow-inner ring-1 ring-white/10 hover:ring-white/20 transition-all">{name}</motion.a>
+            ))}
           </div>
-
-          <div className="mt-16 pt-6 border-t border-white/10 flex justify-between items-center">
-
-          </div>
-        </div>
+        </motion.div>
       </main>
     </div>
   );

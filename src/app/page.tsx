@@ -134,7 +134,7 @@ const links = [
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          © {new Date().getFullYear()} Cosmic Explorations
+          © {new Date().getFullYear()} Rahul Chakrabarty Joy
         </motion.div>
       </div>
     </motion.footer>
@@ -283,7 +283,7 @@ export default function SolarSystem() {
       >
         <div className="text-center space-y-6">
           <motion.h1
-            className="text-2xl md:text-2xl font-semibold text-white/90 tracking-tight"
+            className="text-2xl md:text-2xl font-bold  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400  tracking-tight animate-bounce"
             whileHover={{ letterSpacing: '0.02em' }}
           >
             Hi, I’m Joy

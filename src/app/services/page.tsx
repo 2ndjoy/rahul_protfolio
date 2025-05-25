@@ -335,8 +335,8 @@ export default function ServicePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-8">
-                <span className="text-blue-400">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8  animate-pulse">
+                <span className=" text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 ">
                   Full-Stack
                 </span>
                 <br />
@@ -423,23 +423,29 @@ export default function ServicePage() {
               
              
               <div className='flex justify-center items-center gap-2'>
-                <motion.button
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 rounded-full text-white font-semibold text-sm hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Zap className="w-4 h-4" />
+
+                <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 250 }}
+          >
+            <Link href="/contact">
+              <span className="inline-block px-6 py-2 text-sm md:text-base font-semibold tracking-wide text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full shadow-inner shadow-white/10 ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300">
                 Get in Touch
-              </motion.button>
+              </span>
+            </Link>
+          </motion.div>
               
               <motion.button
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 rounded-full text-white font-semibold text-sm hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-400 to-purple-400  rounded-full text-white font-semibold text-sm hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Zap className="w-4 h-4" />
+                <Link href="/contact">
                 Start a project
+                </Link>
               </motion.button>
+              
               </div>
             </motion.div>
           </div>

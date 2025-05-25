@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from "@/components/icons";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from 'framer-motion'
+import ContactCTA from "@/components/ContactCTA";
 
 const DESIGN_COST = 4000;
 const CMS_COST = 4000;
@@ -346,7 +347,7 @@ function toggleTopping(topping: string) {
       <main className="relative z-10 max-w-6xl mx-auto p-8 text-white">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-7xl font-bold mb-6 bg-blue-400 bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-7xl font-bold mb-6  text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 animate-pulse">
             Launch Your Vision 
           </h1>
           <p className="text-2xl text-blue-200 mb-8 font-light">
@@ -593,7 +594,7 @@ function toggleTopping(topping: string) {
           <div className="lg:col-span-1">
             <div className="sticky top-8 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl">
               <h3 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
-                🌟 Your Quote
+                Place your order
               </h3>
               
               <div className="space-y-4 mb-8">
@@ -653,31 +654,45 @@ function toggleTopping(topping: string) {
                 <div className="text-blue-200 text-sm mt-2">Total Investment</div>
               </div>
               
-              <div className="space-y-3">
-                <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-6 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
-                  🚀 Book a Meeting
-                </button>
-                <button className="w-full bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 px-6 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/25">
-                  📧 Email Quote
-                </button>
-                <button className="w-full bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 px-6 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gray-500/25">
-                  💾 Save Quote
-                </button>
+              <div className="space-y-3 grid justify-center items-cente gap-2">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 250 }}
+          >
+              <span className="inline-block px-6 py-2 text-sm md:text-base font-semibold tracking-wide text-white/80 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md rounded shadow-inner shadow-white/10 ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300">
+               Email Quote
+              </span>
+          </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 250 }}
+              > <span className="inline-block px-6 py-2 text-sm md:text-base font-semibold tracking-wide text-blue-900 hover:text-white bg-white/50 hover:bg-white/10 backdrop-blur-md rounded shadow-inner shadow-white/10 ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300">
+                Save Quote
+              </span>
+              </motion.button>
+
+
+
+                  
               </div>
             </div>
+            <div className="p-4 m-5 mt-10 grid justify-center items-center gap-3">
+            <h2 className="font-semibold text-xl animate-bounce">Would you like to hop on a Google Meet to explore your project together?</h2>
+            <div className="flex justify-center px-6 py-3 "><ContactCTA/></div>
+            </div>
+               
           </div>
         </div>
 
         {/* Footer */}
         <footer className="mt-20 text-center">
           <div className="bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10">
-            <p className="text-xl text-blue-200 mb-4 font-light italic">
-              "Where something delicious is always cooking"
+            <p className="text-xl text-blue-200 mb-4 font-light italic animate-bounce">
+                Dream it. Design it. Deploy it. I’m ready when you are.
             </p>
-            <div className="text-gray-400 space-y-1">
-              <p>Order #0003818</p>
-              <p>5/23/2025, 8:10 AM</p>
-            </div>
           </div>
         </footer>
       </main>
