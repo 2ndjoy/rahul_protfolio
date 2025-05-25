@@ -1,3 +1,4 @@
+// src/app/contact/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -10,6 +11,7 @@ import { SolarSystemBackground } from "@/components/SolarSystem";
 
 export default function ContactPage() {
   const [stars, setStars] = useState<{ top: string; left: string }[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     const s = Array.from({ length: 50 }).map(() => ({
@@ -17,6 +19,8 @@ export default function ContactPage() {
       left: `${Math.random() * 100}%`,
     }));
     setStars(s);
+
+    setIsClient(true);
   }, []);
 
   return (
@@ -53,8 +57,7 @@ export default function ContactPage() {
             Let’s Connect
           </h1>
           <p className="text-lg text-blue-200 mb-8 text-center">
-            Ready to bring your vision to life? Click below to schedule a
-            30-minute chat.
+            Ready to bring your vision to life? Click below to schedule a 30-minute chat.
           </p>
 
           {/* Popup Calendly Button */}
@@ -65,14 +68,14 @@ export default function ContactPage() {
               transition={{ type: "spring", stiffness: 250 }}
               className="mb-10 inline-block"
             >
-              <PopupButton
-                url="https://calendly.com/baker0003locked/30min"
-                rootElement={
-                  typeof window !== "undefined" ? document.body : undefined
-                }
-                text="Schedule a Call"
-                className="flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold tracking-wide text-white bg-gradient-to-r from-blue-400 to-purple-400 rounded-full hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 shadow-lg hover:shadow-xl"
-              />
+              {isClient && (
+                <PopupButton
+                  url="https://calendly.com/baker0003locked/30min"
+                  rootElement={document.body}
+                  text="Schedule a Call"
+                  className="flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold tracking-wide text-white bg-gradient-to-r from-blue-400 to-purple-400 rounded-full hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 shadow-lg hover:shadow-xl"
+                />
+              )}
             </motion.div>
           </div>
 
