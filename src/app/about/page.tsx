@@ -26,7 +26,7 @@ export default function AboutClient() {
             About
           </h1>
           <p className="text-xl md:text-2xl text-blue-200 mb-8 leading-relaxed">
-            I'm Joy. A developer, creator and problem solver.
+            I'm Rahul Chakrabarty Joy. A developer, creator and problem solver.
           </p>
 
           <div className="space-y-6 text-lg text-gray-300">
